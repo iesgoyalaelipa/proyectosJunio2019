@@ -58,3 +58,23 @@ Conntiene la estructura del proyecto Nodejs con:
 	En desarrollo
 		Implementación de la selección de asientos para su reserva
 		Parte del admin: Creación de salas e implementación de películas
+		
+#####################################################
+31/05/2019
+
+Cuarta subida del proyecto en formato zip/7z comprimido
+
+Contiene la estructura en formato Nodejs con:
+	Creadas las regiones en el código para agrupar funciones
+	Implementación en el menú nav la página del Administrador que contiene
+		Creación de salas de cine/Borrado de salas de cine
+		Creación de películas/Borrado de películas
+	Creada la vista con las opciones pertinentes al administrador
+	Ajustes a la BBDD
+	
+	En desarrollo
+		Implementación de la selección de asientos para su reserva/compra.
+
+
+
+
