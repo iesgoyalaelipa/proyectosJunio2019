@@ -1,0 +1,103 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+</ul>
+
+
+<div *ngIf="!objetivoExiste.id" class="row border rounded">
+
+  <div class="col-md-3"></div>
+
+  <form #objetivoForm="ngForm">
+    <h3 class="card-header micolor text-white">Datos fisicos</h3>
+    <div class="form-group row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <input type="number" class="form-control" [(ngModel)]="objetivo.peso" name="peso" #peso="ngModel"
+          placeholder="Peso '70' kg" required>
+      </div>
+      <div class="col-md-3">
+        <input type="number" class="form-control co-md-4" [(ngModel)]="objetivo.altura" name="altura" #altura="ngModel"
+          placeholder="Altura '170' cm" required>
+      </div>
+      <div class="col-md-3">
+        <input type="number" class="form-control co-md-4" [(ngModel)]="objetivo.edad" name="edad" #edad="ngModel"
+          placeholder="Edad '24' años" required>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="ml-3 mt-3">
+      <h4>Generó</h4>
+      <div class="form-check-inline row mb-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <label class="form-check-label" for="sexo">
+            <input type="radio" class="form-check-input" [(ngModel)]="objetivo.sexo" name="sexo" value="Hombre"
+              #sexo="ngModel" required>Hombre
+          </label>
+        </div>
+        <div class="col-md-4">
+          <label class="form-check-label" for="sexo">
+            <input type="radio" class="form-check-input" [(ngModel)]="objetivo.sexo" name="sexo" value="Mujer"
+              #sexo="ngModel" required>Mujer
+          </label>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <h4>Nivel de actividad</h4>
+      <div class="form-check-inline">
+        <label class="form-check-label" for="nivel">
+          <input type="radio" class="form-check-input" [(ngModel)]="objetivo.nivel" name="nivel" #nivel="ngModel"
+            value="1.2" required>
+          Me considero una persona no muy activa, no realizó deporte frecuentemente.
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label" for="nivel">
+          <input type="radio" class="form-check-input" [(ngModel)]="objetivo.nivel" name="nivel" #nivel="ngModel"
+            value="1.55" required>
+          Me consideró una persona moderadamente activa, practico irregularmete algún tipo de deporte.
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label" for="nivel">
+          <input type="radio" class="form-check-input" [(ngModel)]="objetivo.nivel" name="nivel" #nivel="ngModel"
+            value="1.725" required>
+          Me consideró una persona muy activa, practico deporte en forma regular y periódica.
+        </label>
+      </div>
+    </div>
+    <div class="form-group mt-5">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <button class="btn btn-success col-md-3" role="button"
+          (click)='insertarId(objetivo.altura, objetivo.edad, objetivo.nivel, objetivo.peso, objetivo.sexo, authService.usuario.id)'>Registrar
+          Objetivo</button>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div *ngIf="objetivoExiste.id" class="row mt-5">
+  <div class="col-md-3"></div>
+  <div class="text-center col-md-6">
+    <div class="card-header micolor text-white">
+      Objetivo
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Ya tienes registrado un objetivo, actulizalo</h5>
+      <p class="card-text"></p>
+      <button class="btn btn-info" type="button" [routerLink]="['updateObjetivo', objetivoExiste.id]">actualizar
+        Objetivo</button>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

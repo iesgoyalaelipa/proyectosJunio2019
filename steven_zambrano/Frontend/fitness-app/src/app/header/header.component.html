@@ -1,0 +1,85 @@
+<!--navBar sin login -->
+<nav *ngIf="!authService.isAuthenticated()" class="navbar navbar-expand-lg micolor col-12">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <img src="../../assets/images/pesa.png" class="ml-3" width="50" height="50" alt="logo pesa">
+    <h4 class="ml-4 mt-2 text-white textTitulo">FitnessApp</h4>
+
+  </div>
+</nav>
+
+
+
+<!--navBar con usuario-->
+<nav *ngIf="authService.isAuthenticated() && !authService.isAdmin()"
+  class="navbar col-sm-12 navbar-expand-lg navbar-dark micolor ">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <img src="../../assets/images/pesa.png" class="ml-3" width="50" height="50" alt="logo pesa">
+      <h4 class="ml-4 mt-2 text-white textTitulo">FitnessApp</h4>
+
+      <li class="nav-item ml-4" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['perfil', authService.usuario.id]">Perfil</a>
+      </li>
+
+      <li class="nav-item ml-4" routerLinkActive="active">
+        <a class="nav-link" routerLink="/objetivo">Objetivo</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav navbar-right mr-5">
+
+      <li *ngIf="authService.isAuthenticated()" class="dropdown">
+        <a class="btn btn-outline-primary dropdown-toggle btn-info bg-info" role="button" id="dropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{authService.usuario.username}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button (click)="logout()" class="dropdown-item" type="submit">Cerrar Sesión</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<!--navBar con usuario-->
+<nav *ngIf="authService.isAuthenticated() && authService.isAdmin()" class="navbar navbar-expand-lg navbar-dark bg-dark col-sm-12 col-md-12 micolor">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <img src="../../assets/images/pesa.png" class="ml-3" width="50" height="50" alt="logo pesa">
+      <h4 class="ml-4 mt-2 text-white textTitulo">FitnessApp</h4>
+
+      <li class="nav-item  ml-4" routerLinkActive="active">
+        <a class="nav-link" routerLink="/showUsers">Usuarios</a>
+      </li>
+
+      <li class="nav-item ml-4" routerLinkActive="active">
+        <a class="nav-link" routerLink="/showAlimentos">Alimentos</a>
+      </li>
+
+
+    </ul>
+    <ul class="navbar-nav navbar-right mr-5">
+
+      <li *ngIf="authService.isAuthenticated()" class="dropdown">
+        <a class="btn btn-outline-primary dropdown-toggle btn-info bg-white" role="button" id="dropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{authService.usuario.username}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button (click)="logout()" class="dropdown-item" type="submit">Cerrar Sesión</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
